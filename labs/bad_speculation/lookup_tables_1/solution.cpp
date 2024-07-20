@@ -1,5 +1,6 @@
 #include "solution.hpp"
 
+#include <cassert>
 #include <cstdint>
 
 static std::size_t mapToBucket(std::size_t v) { // diff
@@ -23,7 +24,8 @@ static std::size_t mapToBucket(std::size_t v) { // diff
         }
         return ret;
     }();
-    return v < 100 ? vals[v] : -1; // let it crash
+    assert(0 <= v && v < 100);
+    return vals[v];
 }
 
 std::array<std::size_t, NUM_BUCKETS> histogram(const std::vector<int> &values) {
